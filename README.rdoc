@@ -1,0 +1,8 @@
+Boggle is a self-directed project.
+
+Added gems:
+rspec-rails
+capybara
+pry
+bcrypt
+

@@ -6,7 +6,7 @@ describe "visitor" do
     visit root_path
     click_on("Sign Up")
     
-    expect(current_path).to eq(sign_up_path)
+    expect(current_path).to eq(new_user_path)
   end
 
   it "can fill in sign up form" do
@@ -14,9 +14,12 @@ describe "visitor" do
     click_on("Sign Up")
     fill_in "user[username]", with: "username"
     fill_in "user[email]", with: "user@example.com"
-    fill_in "password", with: "password"
+    fill_in "user[password]", with: "password"
     click_on("Submit")
 
-    expect(page).to have_content("Welcome To Boggle!")
+    user = User.find(User.last.id)
+
+    expect(user.username).to eq("username")
+    expect(user.email).to eq("user@example.com")
   end
 end

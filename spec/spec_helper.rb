@@ -1,6 +1,7 @@
 require 'pry'
 require 'factory_girl_rails'
 require 'support/factory_girl'
+require 'support/login_support_methods'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

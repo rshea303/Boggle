@@ -28,6 +28,8 @@ describe "user" do
     expect(page).to have_content("Log In")
   end
 
+end
+
   def sign_in(user)
     visit root_path
     click_on("Log In")
@@ -35,4 +37,4 @@ describe "user" do
     fill_in "session[password]", with: user.password
     click_on("Submit")
   end
-end
+ 

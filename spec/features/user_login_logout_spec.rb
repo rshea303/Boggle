@@ -6,9 +6,12 @@ describe "user" do
   it "can login with credentials" do
     user = create(:user)
     sign_in(user)
+
+    expect(page).to have_content("Welcome, #{user.username.capitalize}")
   end
 
   it "cannot login without credentials" do
+
   end
 
   def sign_in(user)

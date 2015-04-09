@@ -13,10 +13,19 @@ describe "user" do
   it "cannot login without credentials" do
     visit "/"
     click_on("Log In")
-    fill_in "session[email]", with: "not_a_user@email.com"
+    fill_in "session[email]", with: "not_a_user@example.com"
     fill_in "session[password]", with: "incorrect"
 
     expect(current_path).to eq(new_session_path)
+  end
+
+  it "can logout" do
+    user = create(:user)
+    
+    sign_in(user)
+    click_on("Log Out")
+
+    expect(page).to have_content("Log In")
   end
 
   def sign_in(user)

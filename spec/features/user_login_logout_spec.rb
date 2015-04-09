@@ -11,7 +11,12 @@ describe "user" do
   end
 
   it "cannot login without credentials" do
+    visit "/"
+    click_on("Log In")
+    fill_in "session[email]", with: "not_a_user@email.com"
+    fill_in "session[password]", with: "incorrect"
 
+    expect(current_path).to eq(new_session_path)
   end
 
   def sign_in(user)
